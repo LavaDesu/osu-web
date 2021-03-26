@@ -1,0 +1,8 @@
+"A user's me! section"
+type UserPage {
+    "The me! section formatted as html - empty string if the user doesn't have one"
+    html: String!
+
+    "The me! section in raw text - empty string if the user doesn't have one"
+    raw: String!
+}

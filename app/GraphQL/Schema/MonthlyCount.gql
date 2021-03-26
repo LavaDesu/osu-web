@@ -1,0 +1,6 @@
+# Used for both UserMonthlyPlaycount and UserReplaysWatchedCount
+type MonthlyCount {
+    start_date: DateTimeTz! @method(name: "startDate")
+    count: Int! @rename(attribute: "playcount")
+    year_month: String!
+}

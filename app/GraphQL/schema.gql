@@ -1,0 +1,10 @@
+#import Schema/*.gql
+
+scalar DateTimeTz @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTimeTz")
+
+type Query {
+    groups: [Group!]! @paginate
+    users: [User!]! @paginate
+    "Get an osu user"
+    user(id: ID @eq(key: "user_id")): User @first
+}

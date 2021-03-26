@@ -1,0 +1,4 @@
+type Beatmapset {
+    id: ID! @rename(attribute: "beatmapset_id")
+    beatmaps: [Beatmap!]! @hasMany
+}

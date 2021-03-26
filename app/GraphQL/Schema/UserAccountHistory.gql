@@ -1,0 +1,8 @@
+type UserAccountHistory {
+    actor: User! @belongsTo
+    period: Int!
+    reason: String!
+    supporting_url: String
+    timestamp: DateTimeTz!
+    user: User! @belongsTo
+}

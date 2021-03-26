@@ -1,0 +1,4 @@
+type UserAchievement {
+    achievement: Achievement! @belongsTo
+    date: DateTimeTz!
+}

@@ -1,0 +1,33 @@
+# Not a model
+type StatisticsLevel {
+    current: Int!
+    progress: Int!
+}
+
+# Not a model
+type StatisticsGradeCounts {
+    ss: Int!
+    ssh: Int!
+    s: Int!
+    sh: Int!
+    a: Int!
+}
+
+type UserStatistics {
+    country_rank: Int @method(name: "countryRank")
+    global_rank: Int @method(name: "globalRank")
+    level: StatisticsLevel! @useResolver
+    pp: Float! @rename(attribute: "rank_score")
+    ranked_score: Int!
+    hit_accuracy: Float!
+    play_count: Int! @rename(attribute: "playcount")
+    play_time: Int! @rename(attribute: "total_seconds_played")
+    total_score: Int!
+    total_gits: Int! @method(name: "totalHits")
+    # XXX: previously maximum_combo
+    max_combo: Int!
+    replays_watched_by_others: Int! @rename(attribute: "replay_popularity")
+    is_ranked: Boolean! @method(name: "isRanked")
+    grade_counts: StatisticsGradeCounts! @useResolver
+    user: User! @belongsTo
+}

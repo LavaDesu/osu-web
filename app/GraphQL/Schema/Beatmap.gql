@@ -1,0 +1,4 @@
+type Beatmap {
+    id: ID! @rename(attribute: "beatmap_id")
+    version: String!
+}

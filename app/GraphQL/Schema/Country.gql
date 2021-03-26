@@ -1,0 +1,4 @@
+type Country {
+    acronym: String!
+    name: String!
+}

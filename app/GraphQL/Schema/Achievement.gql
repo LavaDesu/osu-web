@@ -1,0 +1,4 @@
+type Achievement {
+    id: ID! @rename(attribute: "achievement_id")
+    description: String
+}

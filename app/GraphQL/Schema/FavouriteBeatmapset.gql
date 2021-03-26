@@ -1,0 +1,7 @@
+type FavouriteBeatmapset {
+    # BUG: This doesn't work for some reason? Always get their first favourite beatmap even though beatmapset_id is right
+    beatmapset: Beatmapset! @belongsTo
+    beatmapset_id: ID!
+    dateadded: DateTimeTz!
+    user: User! @belongsTo
+}

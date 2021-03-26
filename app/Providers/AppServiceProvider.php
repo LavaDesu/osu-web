@@ -101,5 +101,11 @@ class AppServiceProvider extends ServiceProvider
         if ($this->app->environment('testing')) {
             $this->app->register('\App\Providers\AdditionalDuskServiceProvider');
         }
+
+        // Registers GraphQL performance tracing
+        // XXX: is this the right place to put this?
+        if ($this->app->environment('local')) {
+            $this->app->register('\Nuwave\Lighthouse\Tracing\TracingServiceProvider');
+        }
     }
 }

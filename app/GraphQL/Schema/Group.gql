@@ -1,0 +1,10 @@
+type Group {
+    id: ID! @method(name: "getKey")
+    identifier: String!
+    name: String! @rename(attribute: "group_name")
+    short_name: String!
+    description: String! @rename(attribute: "group_desc")
+    colour: String!
+    playmodes: [Playmode!]!
+    is_probationary: Boolean! @method(name: "isProbationary")
+}

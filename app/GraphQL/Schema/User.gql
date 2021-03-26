@@ -1,0 +1,160 @@
+"Represents an osu user"
+type User {
+    "The user's ID"
+    id: ID! @rename(attribute: "user_id")
+
+    "The user's username"
+    username: String!
+
+    "The user's infraction history (ex. mutes)"
+    account_history: [UserAccountHistory!]! @hasMany(relation: "accountHistories")
+
+    "The user's achievements"
+    achievements: [UserAchievement!]! @useResolver
+
+    "The user's currently active tournament banner"
+    active_tournament_banner: ProfileBanner @useResolver
+
+    "The user's avatar URL"
+    avatar_url: String! @rename(attribute: "user_avatar")
+
+    "The user's badges (ex. tournament wins)"
+    badges: [UserBadge!]! @useResolver
+
+    "The user's most played beatmaps"
+    beatmap_playcounts: [BeatmapPlaycount!]! @hasMany(relation: "beatmapPlaycounts" type: PAGINATOR)
+
+    "The user's comments count"
+    comments_count: Int! @useResolver
+
+    "The user's country"
+    country: Country! @belongsTo
+
+    "The user's cover picture"
+    cover: UserCover! @useResolver
+
+    "The user's main group to be displayed in preference"
+    default_group: Group! @useResolver
+
+    "The user's Discord as set in their profile"
+    discord: String @rename(attribute: "user_discord")
+
+    "The user's favourite beatmapsets"
+    favourite_beatmapsets: [FavouriteBeatmapset!]! @hasMany(relation: "favourites" type: PAGINATOR)
+
+    "The user's follower count"
+    follower_count: Int! @method(name: "followerCount")
+
+    "List of groups the user is associated with (ex. GMT, NAT)"
+    groups: [Group!]! @method(name: "visibleGroups")
+
+    "Whether or not the user has ever been a supporter"
+    has_supported: Boolean! @method(name: "hasSupported")
+
+    "The user's interests as set in their profile"
+    interests: String @rename(attribute: "user_interests")
+
+    "Whether or not the user is active; the user will be greyed out in the leaderboards if they are inactive"
+    is_active: Boolean! @method(name: "isActive")
+
+    "Whether or not the user is actually a bot"
+    is_bot: Boolean! @method(name: "isBot")
+    
+    is_deleted: Boolean! @method(name: "isDeleted")
+
+    "Whether or not the user is currently online"
+    is_online: Boolean! @method(name: "isOnline")
+
+    "Whether or not the user is currently a supporter"
+    is_supporter: Boolean! @method(name: "isSupporter")
+
+    "The date and time that the user registered their account"
+    join_date: DateTimeTz! @rename(attribute: "user_regdate")
+
+    "The user's kudosu information"
+    kudosu: UserKudosu! @useResolver
+
+    "The date and time that the user was last online - null is returned if the user has chosen not to display it"
+    last_visit: DateTimeTz @rename(attribute: "displayed_last_visit")
+
+    "The user's location as set in their profile"
+    location: String @rename(attribute: "user_from")
+
+    "The user's beatmap follower count (new beatmap notifications)"
+    mapping_follower_count: Int! @method(name: "mappingFollowerCount")
+
+    "Maximum number of blocks the user is allowed to make"
+    max_blocks: Int! @method(name: "maxBlocks")
+
+    "Maximum number of friends the user is allowed to make"
+    max_friends: Int! @method(name: "maxFriends")
+
+    "The user's playcounts each month"
+    monthly_playcounts: [MonthlyCount!]! @model(name: "UserMonthlyPlaycount") @hasMany(relation: "monthlyPlaycounts", type: PAGINATOR)
+
+    "The user's occupation as set in their profile"
+    occupation: String @rename(attribute: "user_occ")
+
+    "The user's me! section"
+    page: UserPage! @useResolver
+
+    "The user's main game mode"
+    playmode: Playmode!
+
+    "The user's playstyles as set in their profile"
+    playstyle: [Playstyle!] @rename(attribute: "osu_playstyle")
+
+    "Whether or not the user has chosen to only allow private messages from friends"
+    pm_friends_only: Boolean!
+
+    "The user's forum posts count"
+    post_count: Int! @rename(attribute: "user_posts")
+
+    "The user's previous usernames"
+    previous_usernames: [String!]! @useResolver
+
+    "The user's profile colour in hexadecimal rgb"
+    profile_colour: String @rename(attribute: "user_colour")
+
+    "The user's profile card order (ex. me! Ranks Beatmaps...)"
+    profile_order: [ProfileElement!]! @useResolver
+
+    "The user's rank history each day in the past 90 days"
+    rank_history(mode: Playmode): RankHistory @useResolver
+
+    "Amount of times that replays by the user were watched each month"
+    replays_watched_counts: [MonthlyCount!]! @model(name: "UserReplaysWatchedCount") @hasMany(relation: "replaysWatchedCounts", type: PAGINATOR)
+
+    "The user's various statistics"
+    statistics(mode: Playmode): UserStatistics @useResolver
+
+    """
+    The user's supporter level - shown as hearts in their profile page
+    Each level is determined by the total amount of time a user has bought supporter (incl. giving gifts):
+    - 1 heart = 1 - 12 months
+    - 2 hearts = 1 - 5 years
+    - 3 hearts = >5 years
+    """
+    support_level: Int! @method(name: "supportLevel")
+
+    "The user's title"
+    title: String @method(name: "title")
+
+    "The user's title url"
+    title_url: String @method(name: "titleUrl")
+
+    "The user's twitter as set in their profile"
+    twitter: String @rename(attribute: "user_twitter")
+
+    "The user's website as set in their profile"
+    website: String @rename(attribute: "user_website")
+
+    # scores_best_count
+    # scores_first_count
+    # scores_recent_count
+
+    # graveyard_beatmapset_count
+    # loved_beatmapset_count
+    # ranked_and_approved_beatmapset_count
+    # unranked_beatmapset_count
+}

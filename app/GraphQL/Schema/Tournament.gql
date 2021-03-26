@@ -1,0 +1,3 @@
+type Tournament {
+    id: Int! @rename(attribute: "tournament_id")
+}

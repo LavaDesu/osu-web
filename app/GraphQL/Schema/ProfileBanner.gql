@@ -1,0 +1,7 @@
+type ProfileBanner {
+    id: Int! @rename(attribute: "banner_id")
+    country: Country! @belongsTo
+    image: String
+    tournament: Tournament! @belongsTo
+    user: User! @belongsTo
+}

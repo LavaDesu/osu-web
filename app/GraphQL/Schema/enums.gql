@@ -1,0 +1,23 @@
+enum Playmode {
+    osu
+    taiko
+    mania
+    catch
+}
+
+enum ProfileElement {
+    me
+    medals
+    beatmaps
+    kudosu
+    recent_activity
+    top_ranks
+    historical
+}
+
+enum Playstyle {
+    keyboard
+    tablet
+    mouse
+    touch
+}

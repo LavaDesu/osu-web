@@ -1,0 +1,6 @@
+type UserBadge {
+    awarded_at: DateTimeTz! @rename(attribute: "awarded")
+    description: String!
+    image_url: String! @method(name: "imageUrl")
+    url: String!
+}

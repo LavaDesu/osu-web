@@ -1045,7 +1045,8 @@ class User extends Model implements AfterCommit, AuthenticatableContract, HasLoc
 
     public function favourites()
     {
-        return $this->hasMany(FavouriteBeatmapset::class);
+        return $this->hasMany(FavouriteBeatmapset::class)
+            ->orderby('dateadded', 'desc');
     }
 
     public function favouriteBeatmapsets()
@@ -1071,7 +1072,8 @@ class User extends Model implements AfterCommit, AuthenticatableContract, HasLoc
 
     public function beatmapPlaycounts()
     {
-        return $this->hasMany(BeatmapPlaycount::class);
+        return $this->hasMany(BeatmapPlaycount::class)
+            ->orderby('playcount', 'desc');
     }
 
     public function apiKey()

@@ -1,0 +1,5 @@
+type UserCover {
+    id: ID
+    custom_url: String
+    url: String
+}

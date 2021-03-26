@@ -1,0 +1,5 @@
+type BeatmapPlaycount {
+    beatmap: Beatmap! @belongsTo
+    playcount: Int!
+    user: User! @belongsTo
+}
